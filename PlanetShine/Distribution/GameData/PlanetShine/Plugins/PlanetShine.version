@@ -1,0 +1,28 @@
+{
+  "NAME": "PlanetShine",
+  "URL": "https://github.com/Psyrr/ksp-albedo/raw/master/PlanetShine/Distribution/GameData/PlanetShine/Plugins/PlanetShine.version",
+  "DOWNLOAD": "https://github.com/Psyrr/ksp-albedo/releases",
+  "GITHUB": {
+    "USERNAME": "Psyrr",
+    "REPOSITORY": "ksp-albedo",
+    "ALLOW_PRE_RELEASE": false
+  },
+  "VERSION": {
+    "MAJOR": 0,
+    "MINOR": 2,
+    "PATCH": 6,
+    "BUILD": 0
+  },
+  "KSP_VERSION": {
+    "MAJOR": 1,
+    "MINOR": 8
+  },
+  "KSP_VERSION_MIN": {
+    "MAJOR": 1,
+    "MINOR": 8
+  },
+  "KSP_VERSION_MAX": {
+    "MAJOR": 1,
+    "MINOR": 10
+  }
+} 
