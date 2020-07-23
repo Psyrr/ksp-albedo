@@ -10,9 +10,10 @@ This CHANGELOG is in compliance with [Semantic Versioning](https://semver.org/sp
 
 * Added CHANGELOG to keep track of notable changes to project.
 * New In-Depth README.md
-* 
+* Added Documentation Graphics
+*
 
-## Valarian-Era Prior Development
+## Valerian-Era Prior Development
 
 ### V 0.2.5.2 - 2016-10-04
 - Recompiled to fix issue with KSP build 1564

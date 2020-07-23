@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace PlanetShine
-{
-    class GuiRenderer
-    {
+namespace PlanetShine {
+
+    class GuiRenderer {
         private Config config = Config.Instance;
         private GuiManager guiManager;
         private PlanetShine planetShine;
@@ -29,33 +28,30 @@ namespace PlanetShine
         private int settingsLabelWidth = 100;
         private int updateCounter = 0;
 
-        public GuiRenderer(GuiManager manager)
-        {
+        public GuiRenderer(GuiManager manager) {
             guiManager = manager;
             windowStyle = new GUIStyle(HighLogic.Skin.window);
             tabStyle = new GUIStyle(HighLogic.Skin.window);
             planetShine = PlanetShine.Instance;
         }
 
-        public bool Render(PlanetShine planetShine)
-        {
+        public bool Render(PlanetShine planetShine) {
             configWindowPosition = GUILayout.Window(143751300, configWindowPosition,
-                                         OnConfigWindow, "PlanetShine 0.2.5.2 - Beta", windowStyle);
-            if (config.debug && PlanetShine.Instance != null)
-            {
+                                         OnConfigWindow, "PlanetShine 0.2.6 - Beta", windowStyle);
+            if (config.debug && PlanetShine.Instance != null) {
                 debugWindowPosition = GUILayout.Window(143751301, debugWindowPosition,
                                                         OnDebugWindow, "--- PLANETSHINE DEBUG ---", windowStyle);
             }
-            if ((updateCounter % 100) == 0)
-            {
+
+            if ((updateCounter % 100) == 0) {
                 ConfigManager.Instance.SaveSettings();
             }
+
             updateCounter++;
             return true;
         }
 
-        private void OnConfigWindow(int windowID)
-        {
+        private void OnConfigWindow(int windowID) {
             originalBackgroundColor = GUI.backgroundColor;
             originalTextColor = GUI.contentColor;
 
@@ -68,15 +64,15 @@ namespace PlanetShine
 
             GUILayout.BeginHorizontal();
 
-            for (int i = 0; i < tabs.Length; ++i)
-            {
+            for (int i = 0; i < tabs.Length; ++i) {
                 GUI.backgroundColor = currentTab == i ? tabSelectedColor : tabUnselectedColor;
                 GUI.contentColor = currentTab == i ? new Color(0.6f, 1.0f, 0.8f) : new Color(0.4f, 0.66f, 0.53f);
-                if (GUILayout.Button(tabs[i]))
-                {
+
+                if (GUILayout.Button(tabs[i])) {
                     currentTab = i;
                 }
             }
+
             GUI.contentColor = originalTextColor;
             GUI.backgroundColor = originalBackgroundColor;
 
@@ -84,8 +80,7 @@ namespace PlanetShine
 
             GUILayout.Space(30);
 
-            switch (currentTab)
-            {
+            switch (currentTab) {
                 case 0:
                     DisplayTab();
                     break;
@@ -99,7 +94,6 @@ namespace PlanetShine
                     break;
             }
 
-
             GUILayout.EndVertical();
 
             GUI.DragWindow();
@@ -108,19 +102,18 @@ namespace PlanetShine
             configWindowPosition.y = Mathf.Clamp(configWindowPosition.y, 0f, Screen.height - configWindowPosition.height);
         }
 
-        private void DisplayTab()
-        {
+        private void DisplayTab() {
             GUILayout.BeginHorizontal();
             GUILayout.Label("Quality preset", GUILayout.Width(settingsLabelWidth));
-            for (int i = 0; i < 3; ++i)
-            {
+            for (int i = 0; i < 3; ++i) {
                 GUI.backgroundColor = config.quality == i ? tabSelectedColor : tabUnselectedColor;
                 GUI.contentColor = config.quality == i ? Color.white : new Color(0.6f, 0.6f, 0.6f);
-                if (GUILayout.Button(Config.qualityLabels[i]))
-                {
+
+                if (GUILayout.Button(Config.qualityLabels[i])) {
                     config.setQuality(i);
                 }
             }
+
             GUI.backgroundColor = originalBackgroundColor;
             GUI.contentColor = originalTextColor;
 
@@ -152,8 +145,7 @@ namespace PlanetShine
 
         }
 
-        private void IntensityTab()
-        {
+        private void IntensityTab() {
             GUILayout.Label("Planetshine light intensity: " + config.baseAlbedoIntensity);
             GUILayout.BeginHorizontal();
             config.baseAlbedoIntensity = (float)Math.Round(GUILayout.HorizontalSlider(config.baseAlbedoIntensity, 0.0f, 0.50f), 2);
@@ -195,11 +187,9 @@ namespace PlanetShine
             GUILayout.EndHorizontal();
         }
 
-        private void AdvancedTab()
-        {
+        private void AdvancedTab() {
             PlanetShine.renderEnabled = GUILayout.Toggle(PlanetShine.renderEnabled, "Planetshine global ON/OFF");
-            if (config.blizzyToolbarInstalled)
-            {
+            if (config.blizzyToolbarInstalled) {
                 bool stockToolbarEnabledOldValue = config.stockToolbarEnabled;
                 config.stockToolbarEnabled = GUILayout.Toggle(config.stockToolbarEnabled, "Use stock toolbar");
                 if (config.stockToolbarEnabled != stockToolbarEnabledOldValue)
@@ -207,7 +197,6 @@ namespace PlanetShine
             }
 
             GUILayout.Space(15);
-
 
             GUI.contentColor = new Color(0.8f, 1.0f, 0.8f);
             GUILayout.Label("Planetshine fade altitude: " + config.minAlbedoFadeAltitude + " to " + config.maxAlbedoFadeAltitude);
@@ -257,10 +246,8 @@ namespace PlanetShine
             GUI.contentColor = originalTextColor;
         }
 
-        private void OnDebugWindow(int windowID)
-        {
+        private void OnDebugWindow(int windowID) {
             GUILayout.BeginVertical();
-
 
             VariableDebugLabel("MapView.MapIsEnabled", MapView.MapIsEnabled);
             VariableDebugLabel("performanceTimerLast", planetShine.performanceTimerLast);
@@ -307,38 +294,35 @@ namespace PlanetShine
             debugWindowPosition.y = Mathf.Clamp(debugWindowPosition.y, 0f, Screen.height - debugWindowPosition.height);
         }
 
-        private void QualityChoiceRow<T>(string label, ref T target, DisplaySettingOption<T>[] choices)
-        {
+        private void QualityChoiceRow<T>(string label, ref T target, DisplaySettingOption<T>[] choices) {
             GUILayout.BeginHorizontal();
             GUILayout.Label(label, GUILayout.Width(settingsLabelWidth));
-            foreach (DisplaySettingOption<T> choice in choices)
-            {
+
+            foreach (DisplaySettingOption<T> choice in choices) {
                 GUI.backgroundColor = EqualityComparer<T>.Default.Equals(target, choice.value)
                     ? tabSelectedColor : tabUnselectedColor;
                 GUI.contentColor = EqualityComparer<T>.Default.Equals(target, choice.value)
                     ? Color.white : new Color(0.6f, 0.6f, 0.6f);
                 if (GUILayout.Button(choice.label)
-                    && !EqualityComparer<T>.Default.Equals(target, choice.value))
-                {
+                    && !EqualityComparer<T>.Default.Equals(target, choice.value)) {
                     config.setQuality(3);
                     target = choice.value;
                 }
             }
+
             GUI.backgroundColor = originalBackgroundColor;
             GUI.contentColor = originalTextColor;
             GUILayout.EndHorizontal();
         }
 
-        private void VariableDebugLabel<T>(string name, T data)
-        {
+        private void VariableDebugLabel<T>(string name, T data) {
             GUILayout.BeginHorizontal();
             GUILayout.Label(name, GUILayout.Width(debugWindowLabelWidth));
             GUILayout.Label(data.ToString(), GUILayout.Width(debugWindowDataWidth));
             GUILayout.EndHorizontal();
         }
 
-        private void ResetButton<T>(ref T target, T original)
-        {
+        private void ResetButton<T>(ref T target, T original) {
             if (GUILayout.Button("Reset", GUILayout.Width(50)))
                 target = original;
         }

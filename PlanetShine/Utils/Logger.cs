@@ -10,11 +10,10 @@ using UnityEngine;
 
 #endregion
 
-namespace PlanetShine
-{
+namespace PlanetShine {
+
     [KSPAddon(KSPAddon.Startup.Instantly, false)]
-    public class Logger : MonoBehaviour
-    {
+    public class Logger : MonoBehaviour {
         #region Constants
 
         private static readonly string fileName;

@@ -15,26 +15,23 @@ using UnityEngine;
 using KSP.UI.Screens;
 
 
-namespace PlanetShine
-{
+namespace PlanetShine {
+
     [KSPAddon(KSPAddon.Startup.Flight, false)]
-    public class GuiManager : MonoBehaviour
-    {
-        public bool isConfigDisplayed
-        {
-            get
-            {
+    public class GuiManager : MonoBehaviour {
+        public bool isConfigDisplayed {
+            get {
                 return _isConfigDisplayed;
             }
 
-            set
-            {
+            set {
                 if (_isConfigDisplayed == value)
                     return;
                 _isConfigDisplayed = value;
                 UpdateButtonIcons();
             }
         }
+
         private bool _isConfigDisplayed = false;
 
         private Config config = Config.Instance;
@@ -43,24 +40,22 @@ namespace PlanetShine
         private ApplicationLauncherButton stockButton;
         private GuiRenderer guiRenderer;
 
-        public void Start()
-        {
+        public void Start() {
             guiRenderer = new GuiRenderer(this);
             UpdateToolbarBlizzy();
             UpdateToolbarStock();
         }
 
-        public void UpdateToolbarStock()
-        {
-            if (stockButton != null)
-            {
-                if (!config.stockToolbarEnabled && config.blizzyToolbarInstalled)
-                {
+        public void UpdateToolbarStock() {
+            if (stockButton != null) {
+                if (!config.stockToolbarEnabled && config.blizzyToolbarInstalled) {
                     ApplicationLauncher.Instance.RemoveModApplication(stockButton);
                     stockButton = null;
                 }
+
                 return;
             }
+
             else if (!config.stockToolbarEnabled && config.blizzyToolbarInstalled)
                 return;
             stockButton = ApplicationLauncher.Instance.AddModApplication(
@@ -84,8 +79,7 @@ namespace PlanetShine
                 stockButton.SetTrue();
         }
 
-        public void UpdateToolbarBlizzy()
-        {
+        public void UpdateToolbarBlizzy() {
             if (!config.blizzyToolbarInstalled)
                 return;
             if (blizzyButton != null)
@@ -111,7 +105,7 @@ namespace PlanetShine
                     stockButton.SetFalse();       
         }
 
-        private void OnGUI(){
+        private void OnGUI() {
             if (isConfigDisplayed) {
                 guiRenderer.Render(planetShine);
             }

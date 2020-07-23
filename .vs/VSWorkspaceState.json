@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Config",
+    "\\PlanetShine",
+    "\\PlanetShine\\Gui",
+    "\\PlanetShine\\Properties",
+    "\\PlanetShine\\Utils"
+  ],
+  "SelectedNode": "\\PlanetShine\\Gui\\GuiManager.cs",
+  "PreviewInSolutionExplorer": false
+}

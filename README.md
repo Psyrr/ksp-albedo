@@ -1,6 +1,6 @@
 ![Banner](graphics/banner.jpg)
 
-A C# modification for Kerbal Space Program (KSP) originally developed by Valarian who ceased support for the modification as of:
+A C# modification for Kerbal Space Program (KSP) originally developed by Valerian who ceased support for the modification as of:
 
 * 4th of October 2016
 
@@ -33,18 +33,20 @@ In its current state as of version 0.2.5.2. This modification is compatible with
 
 * Minor conflicts (Visual errors) present when used in conjunction with *Kopernicus*.
 
-* Major conflicts (Crashes, etc) present with other mods which also attempt to alter ambient light, such as *Ambient Light Adjustment* or *AmbientLightShifter*.
+* Major conflicts (Crashes, etc) present with other mods which also attempt to alter ambient light, such as 
+  *Ambient Light Adjustment* or *AmbientLightShifter*.
 
 * Up-to Version 0.2.5.2 testing was exclusively done on the x32 version of KSP so issues may be present in the x64 version.
 
 ### Additional Information
 
-Planet and Moon colours are able to be edited through changing "CelestialBodies.cfg" and other settings, such as vacuum light level and reflection intensity is able to be changed in "Settings.cfg".
+Planet and Moon colours are able to be edited through changing "CelestialBodies.cfg" and other settings, such as vacuum 
+light level and reflection intensity is able to be changed in "Settings.cfg".
 
 ### Credits
 
 Special thanks to:
-* [Psyrr](https://github.com/Psyrr) - Current maintainer of the mod.
 
-* [Valarian](https://github.com/valerian) - None of this would have been possible without him as he is responsible for 
-all prior development up to version 0.2.5.2.
+* [Psyrr](https://github.com/Psyrr) - Current maintainer of the mod and responsible for development from 0.2.6 onwards.
+
+* [Valerian](https://github.com/valerian) - Responsible for all prior development up to version 0.2.5.2.

@@ -14,12 +14,9 @@ using System;
 using System.IO;
 using UnityEngine;
 
-namespace PlanetShine
-{
-    public class Utils
-    {
-        public static LineRenderer CreateDebugLine(Color startColor, Color endColor)
-        {
+namespace PlanetShine {
+    public class Utils {
+        public static LineRenderer CreateDebugLine(Color startColor, Color endColor) {
             GameObject obj = new GameObject ("Line");
             LineRenderer line = obj.AddComponent< LineRenderer > ();
             line.material = new Material (Shader.Find ("Particles/Additive"));
@@ -29,43 +26,38 @@ namespace PlanetShine
             return line;
         }
 
-        public static Color GetUnreadableTextureAverageColor(Texture2D texture)
-        {
+        public static Color GetUnreadableTextureAverageColor(Texture2D texture) {
             Texture2D readableTexture = CreateReadable(texture);
             Color color = GetTextureAverageColor(readableTexture);
             UnityEngine.Object.Destroy(readableTexture);
             return color;
         }
 
-        public static Color GetPixelsAverageColor(Color[] texColors)
-        {
+        public static Color GetPixelsAverageColor(Color[] texColors) {
             int total = texColors.Length;
 
             float r = 0;
             float g = 0;
             float b = 0;
 
-            foreach (Color pixel in texColors)
-            {
+            foreach (Color pixel in texColors) {
                 r += pixel.r;
                 g += pixel.g;
                 b += pixel.b;
             }
+
             return new Color(r / total, g / total, b / total, 1.0f);
         }
 
-        public static Color GetTextureAverageColor(Texture2D texture)
-        {
+        public static Color GetTextureAverageColor(Texture2D texture) {
             return GetPixelsAverageColor(texture.GetPixels());
         }
 
-        public static Color GetRimOuterColor(Texture2D texture, float fraction)
-        {
+        public static Color GetRimOuterColor(Texture2D texture, float fraction) {
             return GetPixelsAverageColor(texture.GetPixels(0, 0, (int) Math.Round(texture.width * fraction), texture.height));
         }
 
-        public static Texture2D CreateReadable(Texture2D original)
-        {
+        public static Texture2D CreateReadable(Texture2D original) {
             // Checks
             if (original == null) return null;
             if (original.width == 0 || original.height == 0) return null;
@@ -91,18 +83,14 @@ namespace PlanetShine
     }
 
 
-    public class DisplaySettingOption<T>
-    {
+    public class DisplaySettingOption<T> {
         public string label { get; private set; }
         public T value { get; private set; }
 
-        public DisplaySettingOption(string label, T value)
-        {
+        public DisplaySettingOption(string label, T value) {
             this.label = label;
             this.value = value;
         }
     }
-
-
 }
 
