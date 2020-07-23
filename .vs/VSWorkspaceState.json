@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\PlanetShine",
+    "\\PlanetShine\\Distribution",
+    "\\PlanetShine\\Distribution\\GameData",
+    "\\PlanetShine\\Distribution\\GameData\\PlanetShine",
+    "\\PlanetShine\\Distribution\\GameData\\PlanetShine\\Icons",
+    "\\PlanetShine\\Distribution\\GameData\\PlanetShine\\Plugins",
+    "\\PlanetShine\\Gui",
+    "\\PlanetShine\\Properties",
+    "\\PlanetShine\\Utils"
+  ],
+  "SelectedNode": "\\PlanetShine\\Properties\\AssemblyInfo.cs",
+  "PreviewInSolutionExplorer": false
+}
