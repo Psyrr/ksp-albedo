@@ -6,12 +6,16 @@ This CHANGELOG is in compliance with [Semantic Versioning](https://semver.org/sp
 
 ## Psyrr-Era Current Development
 
-### V 0.2.6
+### V 0.2.6.0 - 23/07/2020
 
-* Added CHANGELOG to keep track of notable changes to project.
+* Updated mod version number displayed on the in-game toolbar
+* Fixed issue where magenta lines would be visible on the players craft (Caused by DEBUG lines - Temp Disabled) 
+* Recompiled to be compliant with KSP 1.4 onwards
+* Refactored Post Build process
+* Changed version file to show compatibility with KSP 1.10
+* Added CHANGELOG to keep track of notable changes to project
 * New In-Depth README.md
 * Added Documentation Graphics
-*
 
 ## Valerian-Era Prior Development
 
