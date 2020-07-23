@@ -6,6 +6,10 @@ This CHANGELOG is in compliance with [Semantic Versioning](https://semver.org/sp
 
 ## Psyrr-Era Current Development
 
+### V 0.2.6.1 - 23/07/2020
+
+* Updated GUI Render to automatically update the mod version number shown on the in-game toolbar based off the assembly version
+
 ### V 0.2.6.0 - 23/07/2020
 
 * Updated mod version number displayed on the in-game toolbar

@@ -13,9 +13,9 @@ can be found at: https://github.com/valerian/ksp-planetshine
 
 ### Compatibility
 
-In its current state as of version 0.2.5.2. This modification is compatible with the KSP 1.2 Pre-Release.
+In its current state as of version 0.2.6.1. This modification is compatible with KSP 1.8 to KSP 1.10.
 
-*Any Version Older than KSP 1.1 is currently incompatible*
+*Any Version Older than KSP 1.8  is currently incompatible, however legacy builds are in the works*
 
 ### Main Features
 
