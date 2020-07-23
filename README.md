@@ -1,4 +1,4 @@
-![Banner](graphics/banner.jpg)
+![Banner](Graphics/banner.jpg)
 
 A C# modification for Kerbal Space Program (KSP) originally developed by Valerian who ceased support for the modification as of:
 

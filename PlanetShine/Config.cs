@@ -14,19 +14,14 @@ using System;
 using System.IO;
 using UnityEngine;
 
-namespace PlanetShine
-{
-
-    public sealed class Config
-    {
+namespace PlanetShine {
+    public sealed class Config {
         private static readonly Config instance = new Config();
 
         private Config(){}
 
-        public static Config Instance
-        {
-            get 
-            {
+        public static Config Instance {
+            get {
                 return instance; 
             }
         }
@@ -55,8 +50,7 @@ namespace PlanetShine
 
         public bool stockToolbarEnabled = true;
 
-        public void setQuality(int selectedQuality)
-        {
+        public void setQuality(int selectedQuality) {
             quality = selectedQuality;
             switch (selectedQuality) {
             case 0:
@@ -80,9 +74,7 @@ namespace PlanetShine
         }
     }
 
-
-    public class ConfigDefaults
-    {
+    public class ConfigDefaults {
         private ConfigDefaults(){}
 
         public static float baseAlbedoIntensity = 0.24f;
@@ -98,23 +90,20 @@ namespace PlanetShine
 
     
     [KSPAddon(KSPAddon.Startup.Flight, false)]
-    public class ConfigManager : MonoBehaviour
-    {
+    public class ConfigManager : MonoBehaviour {
         public static ConfigManager Instance { get; private set; }
         private Config config = Config.Instance;
         private ConfigNode configFile;
         private ConfigNode configFileNode;
 
-        public void Awake()
-        {
+        public void Awake() {
             if (Instance != null)
                 Destroy (Instance.gameObject);
             Instance = this;
 
             LoadSettings ();
 
-            foreach (AssemblyLoader.LoadedAssembly assembly in AssemblyLoader.loadedAssemblies)
-            {
+            foreach (AssemblyLoader.LoadedAssembly assembly in AssemblyLoader.loadedAssemblies) {
                 if (assembly.name == "Toolbar")
                     config.blizzyToolbarInstalled = true;
                 if (assembly.name == "Kopernicus")
@@ -122,8 +111,7 @@ namespace PlanetShine
             }
         }
             
-        public void LoadSettings()
-        {
+        public void LoadSettings() {
             configFile = ConfigNode.Load(KSPUtil.ApplicationRootPath + "GameData/PlanetShine/Config/Settings.cfg");
             configFileNode = configFile.GetNode("PlanetShine");
 
@@ -150,19 +138,15 @@ namespace PlanetShine
             if (FlightGlobals.Bodies == null)
                 return;
 
-            foreach (ConfigNode bodySettings in GameDatabase.Instance.GetConfigNodes("PlanetshineCelestialBody"))
-            {
+            foreach (ConfigNode bodySettings in GameDatabase.Instance.GetConfigNodes("PlanetshineCelestialBody")) {
                 LoadBody(bodySettings);
             }
         }
 
-        protected void LoadBody(ConfigNode bodySettings)
-        {
-            try
-            {
+        protected void LoadBody(ConfigNode bodySettings) {
+            try {
                 CelestialBody body = FlightGlobals.Bodies.Find(n => n.name == bodySettings.GetValue("name"));
-                if (FlightGlobals.Bodies.Contains(body))
-                {
+                if (FlightGlobals.Bodies.Contains(body)) {
                     Color color = ConfigNode.ParseColor(bodySettings.GetValue("color"))
                         * float.Parse(bodySettings.GetValue("intensity"));
                     color.r = (color.r / 255f);
@@ -180,8 +164,7 @@ namespace PlanetShine
                                                        ));
                 }
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 Debug.LogError(String.Format(
                     "[PlanetShine] An exception occured reading CelestialBodyColor node:\n{0}\nThe exception was:\n{1}",
                     bodySettings,
@@ -190,8 +173,7 @@ namespace PlanetShine
             }
         }
 
-        public void SaveSettings()
-        {
+        public void SaveSettings() {
             configFileNode.SetValue("useAreaLight", (config.albedoLightsQuantity > 1) ? "True" : "False");
             configFileNode.SetValue("baseAlbedoIntensity", config.baseAlbedoIntensity.ToString());
             configFileNode.SetValue("vacuumLightLevel", config.vacuumLightLevel.ToString());
@@ -208,7 +190,6 @@ namespace PlanetShine
             configFileNode.SetValue("stockToolbarEnabled", config.stockToolbarEnabled ? "True" : "False");
             configFile.Save(KSPUtil.ApplicationRootPath + "GameData/PlanetShine/Config/Settings.cfg");
         }
-
     }
 }
 
